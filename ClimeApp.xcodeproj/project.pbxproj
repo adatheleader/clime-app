@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3511CAA21D904520002AD8FA /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3511CAA11D904520002AD8FA /* CoreLocation.framework */; };
 		357F92371D8ADE5D0033D49C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357F92361D8ADE5D0033D49C /* AppDelegate.swift */; };
 		357F923C1D8ADE5D0033D49C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 357F923A1D8ADE5D0033D49C /* Main.storyboard */; };
 		357F923F1D8ADE5D0033D49C /* ClimeApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 357F923D1D8ADE5D0033D49C /* ClimeApp.xcdatamodeld */; };
@@ -44,6 +45,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3511CAA11D904520002AD8FA /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		357F92331D8ADE5D0033D49C /* ClimeApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ClimeApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		357F92361D8ADE5D0033D49C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		357F923B1D8ADE5D0033D49C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -74,6 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3511CAA21D904520002AD8FA /* CoreLocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -94,6 +97,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3511CAA01D904520002AD8FA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3511CAA11D904520002AD8FA /* CoreLocation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		357F922A1D8ADE5D0033D49C = {
 			isa = PBXGroup;
 			children = (
@@ -101,6 +112,7 @@
 				357F924D1D8ADE5D0033D49C /* ClimeAppTests */,
 				357F92581D8ADE5D0033D49C /* ClimeAppUITests */,
 				357F92341D8ADE5D0033D49C /* Products */,
+				3511CAA01D904520002AD8FA /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -485,7 +497,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 7987TC552M;
 				INFOPLIST_FILE = ClimeApp/Info.plist;
@@ -502,7 +513,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 7987TC552M;
 				INFOPLIST_FILE = ClimeApp/Info.plist;

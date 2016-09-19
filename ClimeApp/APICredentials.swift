@@ -7,7 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 let forecastAPIKey = "176cd129c5d339df83810066b26b5d7d"
-let coordinat: (lat: Double, long: Double) = (52.7574,41.4325)
-let APIoptions = "?units=si&lang=ru"
+let APIoptions = "?units=si"

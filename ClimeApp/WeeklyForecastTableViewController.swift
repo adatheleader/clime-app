@@ -7,21 +7,64 @@
 //
 
 import UIKit
+import CoreLocation
 
-class WeeklyForecastTableViewController: UITableViewController {
+class WeeklyForecastTableViewControvarr: UITableViewController, CLLocationManagerDelegate {
     
     @IBOutlet weak var currentTemperatureLabel: UILabel?
     @IBOutlet weak var currentWeatherIcon: UIImageView?
     @IBOutlet weak var currentPrecipitationLabel: UILabel?
     @IBOutlet weak var currentTemperatureRangeLabel: UILabel?
+    @IBOutlet weak var currentCityNameLabel: UILabel?
+    
     
     var weeklyWeather: [DailyWeather] = []
     
+    let locationManager = CLLocationManager()
+    
+    var latitude: Double = 0.0
+    var longtitude: Double = 0.0
+    var countryCode: String = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        // Ask for Authorisation from the User.
+        self.locationManager.requestAlwaysAuthorization()
+        // For use in foreground
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest // GPS
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
         configureView()
-        retrieveWeatherForecast()
+        //retrieveWeatherForecast()
         
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let userLocation: CLLocation = locations[0]
+        longtitude = userLocation.coordinate.longitude
+        latitude = userLocation.coordinate.latitude
+        print("\(longtitude)")
+        print("\(latitude)")
+        
+        CLGeocoder().reverseGeocodeLocation(manager.location!, completionHandler: {(placemarks, error)-> Void in
+            if (error != nil) {
+                print("Reverse geocoder failed with error" + (error?.localizedDescription)!)
+                return
+            }
+            
+            if (placemarks?.count)! > 0 {
+                let pm = (placemarks?[0])! as CLPlacemark
+                //print(pm)
+                self.updateCityName(placemark: pm)
+                self.countryCode = (pm.isoCountryCode?.lowercased())!
+                print(self.countryCode)
+            } else {
+                print("Problem with the data received from geocoder")
+            }
+        })
+        
+        self.retrieveWeatherForecast(lat: latitude, long: longtitude)
     }
     
     override func didReceiveMemoryWarning() {
@@ -53,9 +96,16 @@ class WeeklyForecastTableViewController: UITableViewController {
         //refreshControl?.tintColor = UIColor.white
     }
     
+    func updateCityName(placemark: CLPlacemark) {
+        //self.locationManager.stopUpdatingLocation()
+        let cityname = placemark.locality! as String
+        print(cityname)
+        self.currentCityNameLabel!.text = cityname
+    }
+    
     @IBAction func refreshWeather() {
         
-        retrieveWeatherForecast()
+        //retrieveWeatherForecast()
         refreshControl?.endRefreshing()
     }
     
@@ -78,9 +128,9 @@ class WeeklyForecastTableViewController: UITableViewController {
         return 1
     }
     
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "Прогноз погоды"
-    }
+    /*override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return ""
+    }*/
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // return the number of rows
@@ -100,7 +150,7 @@ class WeeklyForecastTableViewController: UITableViewController {
         return cell
     }
     
-    // MARK: - Delagate Methods
+    // MARK: - Delegate Methods
     
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         view.tintColor = UIColor.black
@@ -120,20 +170,20 @@ class WeeklyForecastTableViewController: UITableViewController {
     }
     
     // MARK: - Weather Fetching
-    func retrieveWeatherForecast() {
+    func retrieveWeatherForecast(lat:Double, long:Double) {
         let forecastService = ForecastService(APIKey: forecastAPIKey)
-        forecastService.getForecast(coordinat.lat, long: coordinat.long, APIoptions: APIoptions){
+        forecastService.getForecast(lat, long: long, APIoptions: "?units=si&lang=\(self.countryCode)"){
             (forecast) in
             if let weatherForecast = forecast,
                 let currentWeather = weatherForecast.currentWeather {
                 DispatchQueue.main.async {
-                    
+                    print("LOLOLOLOLOL")
                     if let temperature = currentWeather.temperature {
                         self.currentTemperatureLabel?.text = "\(temperature)º"
                     }
                     
                     if let precipitation = currentWeather.precipProbabitily {
-                        self.currentPrecipitationLabel?.text = "Дождь: \(precipitation)%"
+                        self.currentPrecipitationLabel?.text = "🌧 \(precipitation)%"
                     }
                     
                     if let icon = currentWeather.icon {
@@ -148,6 +198,7 @@ class WeeklyForecastTableViewController: UITableViewController {
                     }
                     
                     self.tableView.reloadData()
+                    print("reload")
                 }
             }
         }
