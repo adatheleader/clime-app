@@ -42,8 +42,8 @@ class WeeklyForecastTableViewControvarr: UITableViewController, CLLocationManage
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let userLocation: CLLocation = locations[0]
-        longtitude = userLocation.coordinate.longitude
-        latitude = userLocation.coordinate.latitude
+        self.longtitude = userLocation.coordinate.longitude
+        self.latitude = userLocation.coordinate.latitude
         print("\(longtitude)")
         print("\(latitude)")
         
@@ -59,12 +59,11 @@ class WeeklyForecastTableViewControvarr: UITableViewController, CLLocationManage
                 self.updateCityName(placemark: pm)
                 self.countryCode = (pm.isoCountryCode?.lowercased())!
                 print(self.countryCode)
+                self.retrieveWeatherForecast(lat: self.latitude, long: self.longtitude)
             } else {
                 print("Problem with the data received from geocoder")
             }
         })
-        
-        self.retrieveWeatherForecast(lat: latitude, long: longtitude)
     }
     
     override func didReceiveMemoryWarning() {
@@ -74,9 +73,6 @@ class WeeklyForecastTableViewControvarr: UITableViewController, CLLocationManage
     
     
     func configureView() {
-        
-        // Set table view's background view property
-        //tableView.backgroundView = BackgroundView()
         
         // Set custom height for tabel view row
         tableView.rowHeight = 64
@@ -93,7 +89,7 @@ class WeeklyForecastTableViewControvarr: UITableViewController, CLLocationManage
         // Position refresh control above background view
         //refreshControl?.layer.zPosition = (tableView.backgroundView?.layer.zPosition)! + 1
         
-        //refreshControl?.tintColor = UIColor.white
+        refreshControl?.tintColor = #colorLiteral(red: 1, green: 0.6498119235, blue: 0, alpha: 1)
     }
     
     func updateCityName(placemark: CLPlacemark) {
@@ -105,7 +101,7 @@ class WeeklyForecastTableViewControvarr: UITableViewController, CLLocationManage
     
     @IBAction func refreshWeather() {
         
-        //retrieveWeatherForecast()
+        self.retrieveWeatherForecast(lat: latitude, long: longtitude)
         refreshControl?.endRefreshing()
     }
     
@@ -178,11 +174,13 @@ class WeeklyForecastTableViewControvarr: UITableViewController, CLLocationManage
                 let currentWeather = weatherForecast.currentWeather {
                 DispatchQueue.main.async {
                     print("LOLOLOLOLOL")
+                    print(self.countryCode)
                     if let temperature = currentWeather.temperature {
                         self.currentTemperatureLabel?.text = "\(temperature)º"
                     }
                     
                     if let precipitation = currentWeather.precipProbabitily {
+                        print(precipitation)
                         self.currentPrecipitationLabel?.text = "🌧 \(precipitation)%"
                     }
                     
@@ -196,7 +194,7 @@ class WeeklyForecastTableViewControvarr: UITableViewController, CLLocationManage
                         let lowTemp = self.weeklyWeather.first?.minTemperature {
                         self.currentTemperatureRangeLabel?.text = "↑\(highTemp)º↓\(lowTemp)º"
                     }
-                    
+                    self.locationManager.stopUpdatingLocation()
                     self.tableView.reloadData()
                     print("reload")
                 }
