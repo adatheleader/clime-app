@@ -82,20 +82,13 @@ class WeeklyForecastTableViewController: UITableViewController, CLLocationManage
         // Set custom height for tabel view row
         tableView.rowHeight = 64
         
-        // Change the size and font of nav bar text
-        if let navBarFont = UIFont(name: "HelveticaNeue-Thin", size: 20.0) {
-            let navBarAttributesDictionary: [String: AnyObject]? = [
-                NSForegroundColorAttributeName: #colorLiteral(red: 1, green: 0.6498119235, blue: 0, alpha: 1),
-                NSFontAttributeName: navBarFont
-            ]
-            navigationController?.navigationBar.titleTextAttributes = navBarAttributesDictionary
-        }
+        // Change color of nav bar text
+        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: #colorLiteral(red: 1, green: 0.6498119235, blue: 0, alpha: 1)]
     }
     
     func updateCityName(placemark: CLPlacemark) {
         //self.locationManager.stopUpdatingLocation()
         let cityname = placemark.locality! as String
-        print(cityname)
         self.currentCityNameLabel!.text = cityname
     }
     

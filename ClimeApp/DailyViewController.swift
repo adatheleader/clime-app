@@ -49,21 +49,14 @@ class DailyViewController: UIViewController {
             }
             
         }
-        
-        // Configure nav bar back button
-        if let buttonFont = UIFont(name: "HelveticaNeue-Thin", size: 20.0) {
-            let barButtonAttributesDictionary: [String: AnyObject]? = [
-                NSForegroundColorAttributeName: #colorLiteral(red: 1, green: 0.6498119235, blue: 0, alpha: 1),
-                NSFontAttributeName: buttonFont
-            ]
-            UIBarButtonItem.appearance().setTitleTextAttributes(barButtonAttributesDictionary, for: UIControlState())
-        }
-        
-        // Update UI with information from the data model
-        currentWeatherIcon?.image
-        
-        
     }
+    
+    @IBAction func openDarkSkyLink(_ sender: AnyObject) {
+        if let url = URL(string: "https://darksky.net/") {
+            UIApplication.shared.open(url, options: [:])
+        }
+    }
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
