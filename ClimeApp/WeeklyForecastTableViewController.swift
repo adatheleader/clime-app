@@ -9,7 +9,7 @@
 import UIKit
 import CoreLocation
 
-class WeeklyForecastTableViewControvarr: UITableViewController, CLLocationManagerDelegate {
+class WeeklyForecastTableViewController: UITableViewController, CLLocationManagerDelegate {
     
     @IBOutlet weak var currentTemperatureLabel: UILabel?
     @IBOutlet weak var currentWeatherIcon: UIImageView?
@@ -90,11 +90,6 @@ class WeeklyForecastTableViewControvarr: UITableViewController, CLLocationManage
             ]
             navigationController?.navigationBar.titleTextAttributes = navBarAttributesDictionary
         }
-        
-        // Position refresh control above background view
-        //refreshControl?.layer.zPosition = (tableView.backgroundView?.layer.zPosition)! + 1
-        
-        refreshControl?.tintColor = #colorLiteral(red: 1, green: 0.6498119235, blue: 0, alpha: 1)
     }
     
     func updateCityName(placemark: CLPlacemark) {
@@ -102,12 +97,6 @@ class WeeklyForecastTableViewControvarr: UITableViewController, CLLocationManage
         let cityname = placemark.locality! as String
         print(cityname)
         self.currentCityNameLabel!.text = cityname
-    }
-    
-    @IBAction func refreshWeather() {
-        
-        self.retrieveWeatherForecast(lat: latitude, long: longtitude)
-        refreshControl?.endRefreshing()
     }
     
     
