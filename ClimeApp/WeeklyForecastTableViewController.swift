@@ -26,6 +26,8 @@ class WeeklyForecastTableViewControvarr: UITableViewController, CLLocationManage
     var longtitude: Double = 0.0
     var countryCode: String = ""
     
+    private var didPerformGeocode = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Ask for Authorisation from the User.
@@ -41,35 +43,39 @@ class WeeklyForecastTableViewControvarr: UITableViewController, CLLocationManage
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let userLocation: CLLocation = locations[0]
-        self.longtitude = userLocation.coordinate.longitude
-        self.latitude = userLocation.coordinate.latitude
-        print("got coordinates")
+        // if we don't have a valid location, exit
+        guard let location = locations.first , location.horizontalAccuracy >= 0 else { return }
+        
+        // or if we have already searched, return
+        guard !didPerformGeocode else { return }
+        
+        // otherwise, update state variable, stop location services and start geocode
+        didPerformGeocode = true
+        locationManager.stopUpdatingLocation()
+        print("stop updating location")
 
-        CLGeocoder().reverseGeocodeLocation(manager.location!, completionHandler: {(placemarks, error)-> Void in
-            if (error != nil) {
-                print("Reverse geocoder failed with error" + (error?.localizedDescription)!)
+        CLGeocoder().reverseGeocodeLocation(location) { placemarks, error in
+            let placemark = placemarks?.first
+            
+            // if there's an error or no placemark, then exit
+            guard error == nil && placemark != nil else {
+                print(error)
                 return
             }
             
-            if (placemarks?.count)! > 0 {
-                let pm = (placemarks?[0])! as CLPlacemark
-                //print(pm)
-                self.updateCityName(placemark: pm)
-                self.countryCode = (pm.isoCountryCode?.lowercased())!
-                print("got country code")
-                self.retrieveWeatherForecast(lat: self.latitude, long: self.longtitude)
-            } else {
-                print("Problem with the data received from geocoder")
-            }
-        })
+            self.updateCityName(placemark: placemark!)
+            self.countryCode = (placemark?.isoCountryCode?.lowercased())!
+            self.longtitude = (placemark?.location?.coordinate.longitude)!
+            self.latitude = (placemark?.location?.coordinate.latitude)!
+            self.retrieveWeatherForecast(lat: self.latitude, long: self.longtitude)
+            print("got country code and coordinates")
+        }
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
     
     func configureView() {
         
@@ -122,10 +128,6 @@ class WeeklyForecastTableViewControvarr: UITableViewController, CLLocationManage
         // return the number of sections
         return 1
     }
-    
-    /*override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return ""
-    }*/
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // return the number of rows
