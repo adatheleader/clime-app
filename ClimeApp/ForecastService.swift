@@ -14,7 +14,7 @@ struct ForecastService {
     
     init(APIKey: String) {
         forecastAPIKey = APIKey
-        forecastBaseURL = URL(string: "https://api.forecast.io/forecast/\(forecastAPIKey)/")
+        forecastBaseURL = URL(string: "https://api.darksky.net/forecast/\(forecastAPIKey)/")
     }
     
     func getForecast (_ lat: Double, long: Double, APIoptions: String, completion: @escaping ((Forecast?) -> Void)) {

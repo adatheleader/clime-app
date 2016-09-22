@@ -44,9 +44,8 @@ class WeeklyForecastTableViewControvarr: UITableViewController, CLLocationManage
         let userLocation: CLLocation = locations[0]
         self.longtitude = userLocation.coordinate.longitude
         self.latitude = userLocation.coordinate.latitude
-        print("\(longtitude)")
-        print("\(latitude)")
-        
+        print("got coordinates")
+
         CLGeocoder().reverseGeocodeLocation(manager.location!, completionHandler: {(placemarks, error)-> Void in
             if (error != nil) {
                 print("Reverse geocoder failed with error" + (error?.localizedDescription)!)
@@ -58,7 +57,7 @@ class WeeklyForecastTableViewControvarr: UITableViewController, CLLocationManage
                 //print(pm)
                 self.updateCityName(placemark: pm)
                 self.countryCode = (pm.isoCountryCode?.lowercased())!
-                print(self.countryCode)
+                print("got country code")
                 self.retrieveWeatherForecast(lat: self.latitude, long: self.longtitude)
             } else {
                 print("Problem with the data received from geocoder")
@@ -173,14 +172,12 @@ class WeeklyForecastTableViewControvarr: UITableViewController, CLLocationManage
             if let weatherForecast = forecast,
                 let currentWeather = weatherForecast.currentWeather {
                 DispatchQueue.main.async {
-                    print("LOLOLOLOLOL")
-                    print(self.countryCode)
+                    print("API request init")
                     if let temperature = currentWeather.temperature {
                         self.currentTemperatureLabel?.text = "\(temperature)º"
                     }
                     
                     if let precipitation = currentWeather.precipProbabitily {
-                        print(precipitation)
                         self.currentPrecipitationLabel?.text = "🌧 \(precipitation)%"
                     }
                     
@@ -196,7 +193,6 @@ class WeeklyForecastTableViewControvarr: UITableViewController, CLLocationManage
                     }
                     self.locationManager.stopUpdatingLocation()
                     self.tableView.reloadData()
-                    print("reload")
                 }
             }
         }
