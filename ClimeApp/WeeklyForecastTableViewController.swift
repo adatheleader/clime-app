@@ -24,7 +24,7 @@ class WeeklyForecastTableViewController: UITableViewController, CLLocationManage
     
     var latitude: Double = 0.0
     var longtitude: Double = 0.0
-    var countryCode: String = ""
+    var countryCode: String = "en"
     
     private var didPerformGeocode = false
     
@@ -64,7 +64,16 @@ class WeeklyForecastTableViewController: UITableViewController, CLLocationManage
             }
             
             self.updateCityName(placemark: placemark!)
-            self.countryCode = (placemark?.isoCountryCode?.lowercased())!
+            //self.countryCode = (placemark?.isoCountryCode?.lowercased())!
+            
+            if let country = placemark?.isoCountryCode?.lowercased() {
+                if country == "ru" {
+                    self.countryCode = country
+                } else {
+                    self.countryCode = "en"
+                }
+                print(self.countryCode)
+            }
             self.longtitude = (placemark?.location?.coordinate.longitude)!
             self.latitude = (placemark?.location?.coordinate.latitude)!
             self.retrieveWeatherForecast(lat: self.latitude, long: self.longtitude)
@@ -121,7 +130,7 @@ class WeeklyForecastTableViewController: UITableViewController, CLLocationManage
         
         let dailyWeather = weeklyWeather[(indexPath as NSIndexPath).row]
         if let maxTemp = dailyWeather.maxTemperature {
-            cell.temperatureLabel.text = "\(maxTemp)ºC"
+            cell.temperatureLabel.text = "\(maxTemp)º"
         }
         cell.weatherIcon.image = dailyWeather.icon
         cell.dayLabel.text = dailyWeather.day
@@ -151,14 +160,14 @@ class WeeklyForecastTableViewController: UITableViewController, CLLocationManage
     // MARK: - Weather Fetching
     func retrieveWeatherForecast(lat:Double, long:Double) {
         let forecastService = ForecastService(APIKey: forecastAPIKey)
-        forecastService.getForecast(lat, long: long, APIoptions: "?units=si&lang=\(self.countryCode)"){
+        forecastService.getForecast(lat, long: long, APIoptions: "?units=auto&lang=\(self.countryCode)"){
             (forecast) in
             if let weatherForecast = forecast,
                 let currentWeather = weatherForecast.currentWeather {
                 DispatchQueue.main.async {
                     print("API request init")
                     if let temperature = currentWeather.temperature {
-                        self.currentTemperatureLabel?.text = "\(temperature)ºC"
+                        self.currentTemperatureLabel?.text = "\(temperature)º"
                     }
                     
                     if let precipitation = currentWeather.precipProbabitily {
@@ -173,7 +182,7 @@ class WeeklyForecastTableViewController: UITableViewController, CLLocationManage
                     
                     if let highTemp = self.weeklyWeather.first?.maxTemperature,
                         let lowTemp = self.weeklyWeather.first?.minTemperature {
-                        self.currentTemperatureRangeLabel?.text = "↑\(highTemp)ºC ↓\(lowTemp)ºC"
+                        self.currentTemperatureRangeLabel?.text = "↑\(highTemp)º ↓\(lowTemp)º"
                     }
                     self.locationManager.stopUpdatingLocation()
                     self.tableView.reloadData()
