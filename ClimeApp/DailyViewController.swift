@@ -42,8 +42,8 @@ class DailyViewController: UIViewController {
                 let highTemp = weather.maxTemperature,
                 let rain = weather.precipChance,
                 let humidity = weather.humidity {
-                lowTemperatureLabel?.text = "\(lowTemp)º"
-                highTemperatureLabel?.text = "\(highTemp)º"
+                lowTemperatureLabel?.text = "\(lowTemp)ºC"
+                highTemperatureLabel?.text = "\(highTemp)ºC"
                 precipitationLabel?.text = "\(rain)%"
                 humidityLabel?.text = "\(humidity)%"
             }

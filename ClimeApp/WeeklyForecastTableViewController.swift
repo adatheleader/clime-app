@@ -121,7 +121,7 @@ class WeeklyForecastTableViewController: UITableViewController, CLLocationManage
         
         let dailyWeather = weeklyWeather[(indexPath as NSIndexPath).row]
         if let maxTemp = dailyWeather.maxTemperature {
-            cell.temperatureLabel.text = "\(maxTemp)º"
+            cell.temperatureLabel.text = "\(maxTemp)ºC"
         }
         cell.weatherIcon.image = dailyWeather.icon
         cell.dayLabel.text = dailyWeather.day
@@ -158,7 +158,7 @@ class WeeklyForecastTableViewController: UITableViewController, CLLocationManage
                 DispatchQueue.main.async {
                     print("API request init")
                     if let temperature = currentWeather.temperature {
-                        self.currentTemperatureLabel?.text = "\(temperature)º"
+                        self.currentTemperatureLabel?.text = "\(temperature)ºC"
                     }
                     
                     if let precipitation = currentWeather.precipProbabitily {
@@ -173,7 +173,7 @@ class WeeklyForecastTableViewController: UITableViewController, CLLocationManage
                     
                     if let highTemp = self.weeklyWeather.first?.maxTemperature,
                         let lowTemp = self.weeklyWeather.first?.minTemperature {
-                        self.currentTemperatureRangeLabel?.text = "↑\(highTemp)º↓\(lowTemp)º"
+                        self.currentTemperatureRangeLabel?.text = "↑\(highTemp)ºC ↓\(lowTemp)ºC"
                     }
                     self.locationManager.stopUpdatingLocation()
                     self.tableView.reloadData()
