@@ -1,0 +1,51 @@
+
+/* Class = "UILabel"; text = "100%"; ObjectID = "6uc-0Y-FtM"; */
+"6uc-0Y-FtM.text" = "100%";
+
+/* Class = "UILabel"; text = "67º"; ObjectID = "7KR-QB-UJj"; */
+"7KR-QB-UJj.text" = "67º";
+
+/* Class = "UILabel"; text = "↑--º↓--º"; ObjectID = "9Me-mG-J92"; */
+"9Me-mG-J92.text" = "↑--º↓--º";
+
+/* Class = "UILabel"; text = "---"; ObjectID = "B3t-RP-suR"; */
+"B3t-RP-suR.text" = "---";
+
+/* Class = "UILabel"; text = "--º"; ObjectID = "KMY-Sl-gVp"; */
+"KMY-Sl-gVp.text" = "--º";
+
+/* Class = "UILabel"; text = "🌧"; ObjectID = "RIj-R6-t6g"; */
+"RIj-R6-t6g.text" = "🌧";
+
+/* Class = "UILabel"; text = "↑"; ObjectID = "WnC-BS-J4g"; */
+"WnC-BS-J4g.text" = "↑";
+
+/* Class = "UIButton"; normalTitle = "Powered by Dark Sky"; ObjectID = "a3j-UW-YNL"; */
+"a3j-UW-YNL.normalTitle" = "Powered by Dark Sky";
+
+/* Class = "UILabel"; text = "-25º"; ObjectID = "aBs-fZ-8oe"; */
+"aBs-fZ-8oe.text" = "-25º";
+
+/* Class = "UILabel"; text = "🌧 --%"; ObjectID = "bXb-9b-fwm"; */
+"bXb-9b-fwm.text" = "🌧 --%";
+
+/* Class = "UILabel"; text = "25º"; ObjectID = "cOs-5L-QTl"; */
+"cOs-5L-QTl.text" = "25º";
+
+/* Class = "UILabel"; text = "↓"; ObjectID = "fez-5a-D06"; */
+"fez-5a-D06.text" = "↓";
+
+/* Class = "UILabel"; text = "Partly cloudy starting in the afternoon, continuing until evening."; ObjectID = "owe-aX-eB6"; */
+"owe-aX-eB6.text" = "Partly cloudy starting in the afternoon, continuing until evening.";
+
+/* Class = "UILabel"; text = "Wednesday"; ObjectID = "sDx-4Y-xGg"; */
+"sDx-4Y-xGg.text" = "Wednesday";
+
+/* Class = "UILabel"; text = "7:06 PM"; ObjectID = "sn9-xT-zTp"; */
+"sn9-xT-zTp.text" = "7:06 PM";
+
+/* Class = "UINavigationItem"; title = "Clime"; ObjectID = "uAe-Ch-63s"; */
+"uAe-Ch-63s.title" = "Clime";
+
+/* Class = "UILabel"; text = "7:06 AM"; ObjectID = "zTr-W2-6Pu"; */
+"zTr-W2-6Pu.text" = "7:06 AM";

@@ -1,0 +1,8 @@
+/* 
+  InfoPlist.strings
+  ClimeApp
+
+  Created by Лидия Хашина on 29.09.16.
+  Copyright © 2016 Lydia Khashina. All rights reserved.
+*/
+"NSLocationWhenInUseUsageDescription" = "The app uses your location to show weather forecast in your place";
