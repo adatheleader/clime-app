@@ -26,6 +26,13 @@
 		357F927B1D8AE7FF0033D49C /* ForecastService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357F927A1D8AE7FF0033D49C /* ForecastService.swift */; };
 		357F927D1D8AE8180033D49C /* NetworkOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357F927C1D8AE8170033D49C /* NetworkOperation.swift */; };
 		357F927F1D8AEA370033D49C /* DailyWeatherTabelViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357F927E1D8AEA370033D49C /* DailyWeatherTabelViewCell.swift */; };
+		35D501131DA26697004EA765 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35D501111DA26697004EA765 /* Interface.storyboard */; };
+		35D501151DA26697004EA765 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 35D501141DA26697004EA765 /* Assets.xcassets */; };
+		35D5011C1DA26698004EA765 /* ClimeAppWatch Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 35D5011B1DA26697004EA765 /* ClimeAppWatch Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		35D501211DA26698004EA765 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D501201DA26698004EA765 /* InterfaceController.swift */; };
+		35D501231DA26698004EA765 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D501221DA26698004EA765 /* ExtensionDelegate.swift */; };
+		35D501251DA26698004EA765 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 35D501241DA26698004EA765 /* Assets.xcassets */; };
+		35D501291DA26698004EA765 /* ClimeAppWatch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 35D5010F1DA26697004EA765 /* ClimeAppWatch.app */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,7 +50,46 @@
 			remoteGlobalIDString = 357F92321D8ADE5D0033D49C;
 			remoteInfo = ClimeApp;
 		};
+		35D5011D1DA26698004EA765 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 357F922B1D8ADE5D0033D49C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 35D5011A1DA26697004EA765;
+			remoteInfo = "ClimeAppWatch Extension";
+		};
+		35D501271DA26698004EA765 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 357F922B1D8ADE5D0033D49C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 35D5010E1DA26697004EA765;
+			remoteInfo = ClimeAppWatch;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		35D5012F1DA26698004EA765 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				35D5011C1DA26698004EA765 /* ClimeAppWatch Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		35D501311DA26698004EA765 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				35D501291DA26698004EA765 /* ClimeAppWatch.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		350A354F1D9DA3E200D94826 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
@@ -74,6 +120,15 @@
 		357F927A1D8AE7FF0033D49C /* ForecastService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForecastService.swift; sourceTree = "<group>"; };
 		357F927C1D8AE8170033D49C /* NetworkOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkOperation.swift; sourceTree = "<group>"; };
 		357F927E1D8AEA370033D49C /* DailyWeatherTabelViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DailyWeatherTabelViewCell.swift; sourceTree = "<group>"; };
+		35D5010F1DA26697004EA765 /* ClimeAppWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ClimeAppWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		35D501121DA26697004EA765 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
+		35D501141DA26697004EA765 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		35D501161DA26697004EA765 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		35D5011B1DA26697004EA765 /* ClimeAppWatch Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "ClimeAppWatch Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		35D501201DA26698004EA765 /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
+		35D501221DA26698004EA765 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
+		35D501241DA26698004EA765 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		35D501261DA26698004EA765 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +154,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		35D501181DA26697004EA765 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -117,6 +179,8 @@
 				357F92351D8ADE5D0033D49C /* ClimeApp */,
 				357F924D1D8ADE5D0033D49C /* ClimeAppTests */,
 				357F92581D8ADE5D0033D49C /* ClimeAppUITests */,
+				35D501101DA26697004EA765 /* ClimeAppWatch */,
+				35D5011F1DA26698004EA765 /* ClimeAppWatch Extension */,
 				357F92341D8ADE5D0033D49C /* Products */,
 				3511CAA01D904520002AD8FA /* Frameworks */,
 			);
@@ -128,6 +192,8 @@
 				357F92331D8ADE5D0033D49C /* ClimeApp.app */,
 				357F924A1D8ADE5D0033D49C /* ClimeAppTests.xctest */,
 				357F92551D8ADE5D0033D49C /* ClimeAppUITests.xctest */,
+				35D5010F1DA26697004EA765 /* ClimeAppWatch.app */,
+				35D5011B1DA26697004EA765 /* ClimeAppWatch Extension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -205,6 +271,27 @@
 			name = API;
 			sourceTree = "<group>";
 		};
+		35D501101DA26697004EA765 /* ClimeAppWatch */ = {
+			isa = PBXGroup;
+			children = (
+				35D501111DA26697004EA765 /* Interface.storyboard */,
+				35D501141DA26697004EA765 /* Assets.xcassets */,
+				35D501161DA26697004EA765 /* Info.plist */,
+			);
+			path = ClimeAppWatch;
+			sourceTree = "<group>";
+		};
+		35D5011F1DA26698004EA765 /* ClimeAppWatch Extension */ = {
+			isa = PBXGroup;
+			children = (
+				35D501201DA26698004EA765 /* InterfaceController.swift */,
+				35D501221DA26698004EA765 /* ExtensionDelegate.swift */,
+				35D501241DA26698004EA765 /* Assets.xcassets */,
+				35D501261DA26698004EA765 /* Info.plist */,
+			);
+			path = "ClimeAppWatch Extension";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -215,10 +302,12 @@
 				357F922F1D8ADE5D0033D49C /* Sources */,
 				357F92301D8ADE5D0033D49C /* Frameworks */,
 				357F92311D8ADE5D0033D49C /* Resources */,
+				35D501311DA26698004EA765 /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				35D501281DA26698004EA765 /* PBXTargetDependency */,
 			);
 			name = ClimeApp;
 			productName = ClimeApp;
@@ -261,6 +350,40 @@
 			productReference = 357F92551D8ADE5D0033D49C /* ClimeAppUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		35D5010E1DA26697004EA765 /* ClimeAppWatch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 35D501301DA26698004EA765 /* Build configuration list for PBXNativeTarget "ClimeAppWatch" */;
+			buildPhases = (
+				35D5010D1DA26697004EA765 /* Resources */,
+				35D5012F1DA26698004EA765 /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				35D5011E1DA26698004EA765 /* PBXTargetDependency */,
+			);
+			name = ClimeAppWatch;
+			productName = ClimeAppWatch;
+			productReference = 35D5010F1DA26697004EA765 /* ClimeAppWatch.app */;
+			productType = "com.apple.product-type.application.watchapp2";
+		};
+		35D5011A1DA26697004EA765 /* ClimeAppWatch Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 35D5012E1DA26698004EA765 /* Build configuration list for PBXNativeTarget "ClimeAppWatch Extension" */;
+			buildPhases = (
+				35D501171DA26697004EA765 /* Sources */,
+				35D501181DA26697004EA765 /* Frameworks */,
+				35D501191DA26697004EA765 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "ClimeAppWatch Extension";
+			productName = "ClimeAppWatch Extension";
+			productReference = 35D5011B1DA26697004EA765 /* ClimeAppWatch Extension.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -288,6 +411,16 @@
 						ProvisioningStyle = Automatic;
 						TestTargetID = 357F92321D8ADE5D0033D49C;
 					};
+					35D5010E1DA26697004EA765 = {
+						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = H89873LUM4;
+						ProvisioningStyle = Automatic;
+					};
+					35D5011A1DA26697004EA765 = {
+						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = H89873LUM4;
+						ProvisioningStyle = Automatic;
+					};
 				};
 			};
 			buildConfigurationList = 357F922E1D8ADE5D0033D49C /* Build configuration list for PBXProject "ClimeApp" */;
@@ -307,6 +440,8 @@
 				357F92321D8ADE5D0033D49C /* ClimeApp */,
 				357F92491D8ADE5D0033D49C /* ClimeAppTests */,
 				357F92541D8ADE5D0033D49C /* ClimeAppUITests */,
+				35D5010E1DA26697004EA765 /* ClimeAppWatch */,
+				35D5011A1DA26697004EA765 /* ClimeAppWatch Extension */,
 			);
 		};
 /* End PBXProject section */
@@ -334,6 +469,23 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		35D5010D1DA26697004EA765 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				35D501151DA26697004EA765 /* Assets.xcassets in Resources */,
+				35D501131DA26697004EA765 /* Interface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		35D501191DA26697004EA765 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				35D501251DA26698004EA765 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -375,6 +527,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		35D501171DA26697004EA765 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				35D501231DA26698004EA765 /* ExtensionDelegate.swift in Sources */,
+				35D501211DA26698004EA765 /* InterfaceController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -387,6 +548,16 @@
 			isa = PBXTargetDependency;
 			target = 357F92321D8ADE5D0033D49C /* ClimeApp */;
 			targetProxy = 357F92561D8ADE5D0033D49C /* PBXContainerItemProxy */;
+		};
+		35D5011E1DA26698004EA765 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 35D5011A1DA26697004EA765 /* ClimeAppWatch Extension */;
+			targetProxy = 35D5011D1DA26698004EA765 /* PBXContainerItemProxy */;
+		};
+		35D501281DA26698004EA765 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 35D5010E1DA26697004EA765 /* ClimeAppWatch */;
+			targetProxy = 35D501271DA26698004EA765 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -416,6 +587,14 @@
 				350A35501D9DA3E200D94826 /* ru */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		35D501111DA26697004EA765 /* Interface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				35D501121DA26697004EA765 /* Base */,
+			);
+			name = Interface.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -604,6 +783,76 @@
 			};
 			name = Release;
 		};
+		35D5012A1DA26698004EA765 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = H89873LUM4;
+				IBSC_MODULE = ClimeAppWatch_Extension;
+				INFOPLIST_FILE = ClimeAppWatch/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = com.khashin.ClimeApp.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 3.0;
+			};
+			name = Debug;
+		};
+		35D5012B1DA26698004EA765 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = H89873LUM4;
+				IBSC_MODULE = ClimeAppWatch_Extension;
+				INFOPLIST_FILE = ClimeAppWatch/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = com.khashin.ClimeApp.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 3.0;
+			};
+			name = Release;
+		};
+		35D5012C1DA26698004EA765 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				DEVELOPMENT_TEAM = H89873LUM4;
+				INFOPLIST_FILE = "ClimeAppWatch Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.khashin.ClimeApp.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 3.0;
+			};
+			name = Debug;
+		};
+		35D5012D1DA26698004EA765 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				DEVELOPMENT_TEAM = H89873LUM4;
+				INFOPLIST_FILE = "ClimeAppWatch Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.khashin.ClimeApp.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 3.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -642,6 +891,22 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		35D5012E1DA26698004EA765 /* Build configuration list for PBXNativeTarget "ClimeAppWatch Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				35D5012C1DA26698004EA765 /* Debug */,
+				35D5012D1DA26698004EA765 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		35D501301DA26698004EA765 /* Build configuration list for PBXNativeTarget "ClimeAppWatch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				35D5012A1DA26698004EA765 /* Debug */,
+				35D5012B1DA26698004EA765 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="11077"/>
+    </dependencies>
+    <scenes>
+        <!--Interface Controller-->
+        <scene sceneID="aou-V4-d1y">
+            <objects>
+                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="ClimeAppWatch" customModuleProvider="target">
+                    <items>
+                        <label width="136" alignment="left" text="City name" textAlignment="center" id="T2T-zR-Kdq">
+                            <color key="textColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        </label>
+                        <group width="1" alignment="left" verticalAlignment="center" id="WVX-lU-4nb">
+                            <items>
+                                <imageView width="45" height="45" alignment="center" verticalAlignment="center" image="default_large" contentMode="scaleAspectFit" id="dAX-zc-mQR"/>
+                                <label height="20" alignment="center" verticalAlignment="center" text="Label" textAlignment="left" id="OE7-XE-GX8">
+                                    <color key="textColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </label>
+                            </items>
+                        </group>
+                        <group width="1" alignment="left" verticalAlignment="bottom" id="0T2-bf-8CN">
+                            <items>
+                                <label alignment="left" verticalAlignment="center" text="Label" id="NV9-R0-PaS"/>
+                                <label alignment="right" verticalAlignment="center" text="Label" id="2rW-tI-N02"/>
+                            </items>
+                        </group>
+                    </items>
+                    <connections>
+                        <outlet property="cityNameLabel" destination="T2T-zR-Kdq" id="VuM-ta-d0i"/>
+                        <outlet property="currentWeather" destination="OE7-XE-GX8" id="Ikl-6p-onA"/>
+                        <outlet property="minMaxTempLabel" destination="2rW-tI-N02" id="x1w-tN-gij"/>
+                        <outlet property="rainLabel" destination="NV9-R0-PaS" id="Yoc-RK-q7r"/>
+                        <outlet property="weatherImage" destination="dAX-zc-mQR" id="9yD-m2-ZNc"/>
+                    </connections>
+                </controller>
+            </objects>
+        </scene>
+    </scenes>
+</document>
