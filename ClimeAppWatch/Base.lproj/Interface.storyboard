@@ -10,14 +10,15 @@
             <objects>
                 <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="ClimeAppWatch" customModuleProvider="target">
                     <items>
-                        <label width="136" alignment="left" text="City name" textAlignment="center" id="T2T-zR-Kdq">
+                        <label width="136" alignment="left" text="---" textAlignment="center" id="T2T-zR-Kdq">
                             <color key="textColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         </label>
                         <group width="1" alignment="left" verticalAlignment="center" id="WVX-lU-4nb">
                             <items>
                                 <imageView width="45" height="45" alignment="center" verticalAlignment="center" image="default_large" contentMode="scaleAspectFit" id="dAX-zc-mQR"/>
-                                <label height="20" alignment="center" verticalAlignment="center" text="Label" textAlignment="left" id="OE7-XE-GX8">
+                                <label height="20" alignment="center" verticalAlignment="center" text="--º" textAlignment="left" id="OE7-XE-GX8">
                                     <color key="textColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <fontDescription key="font" type="system" pointSize="28"/>
                                 </label>
                             </items>
                         </group>

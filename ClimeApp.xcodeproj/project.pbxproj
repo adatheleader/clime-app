@@ -33,6 +33,13 @@
 		35D501231DA26698004EA765 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D501221DA26698004EA765 /* ExtensionDelegate.swift */; };
 		35D501251DA26698004EA765 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 35D501241DA26698004EA765 /* Assets.xcassets */; };
 		35D501291DA26698004EA765 /* ClimeAppWatch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 35D5010F1DA26697004EA765 /* ClimeAppWatch.app */; };
+		35D501321DA27174004EA765 /* APICredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357F926E1D8AE6B80033D49C /* APICredentials.swift */; };
+		35D501341DA27185004EA765 /* ForecastService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357F927A1D8AE7FF0033D49C /* ForecastService.swift */; };
+		35D501351DA27188004EA765 /* NetworkOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357F927C1D8AE8170033D49C /* NetworkOperation.swift */; };
+		35D501361DA2718B004EA765 /* CurrentWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357F92711D8AE73E0033D49C /* CurrentWeather.swift */; };
+		35D501371DA2718E004EA765 /* DailyWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357F92731D8AE76D0033D49C /* DailyWeather.swift */; };
+		35D501381DA27191004EA765 /* Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357F92751D8AE78E0033D49C /* Icon.swift */; };
+		35D501391DA27193004EA765 /* Forecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357F92771D8AE7B80033D49C /* Forecast.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -531,7 +538,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				35D501341DA27185004EA765 /* ForecastService.swift in Sources */,
+				35D501371DA2718E004EA765 /* DailyWeather.swift in Sources */,
+				35D501321DA27174004EA765 /* APICredentials.swift in Sources */,
+				35D501351DA27188004EA765 /* NetworkOperation.swift in Sources */,
+				35D501391DA27193004EA765 /* Forecast.swift in Sources */,
 				35D501231DA26698004EA765 /* ExtensionDelegate.swift in Sources */,
+				35D501361DA2718B004EA765 /* CurrentWeather.swift in Sources */,
+				35D501381DA27191004EA765 /* Icon.swift in Sources */,
 				35D501211DA26698004EA765 /* InterfaceController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

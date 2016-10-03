@@ -7,20 +7,77 @@
 //
 
 import WatchKit
+import CoreLocation
 
-class ExtensionDelegate: NSObject, WKExtensionDelegate {
+class ExtensionDelegate: NSObject, WKExtensionDelegate, CLLocationManagerDelegate {
+    
+    let locationManager = CLLocationManager()
+    
+    var latitude: Double = 0.0
+    var longtitude: Double = 0.0
+    var countryCode: String = "en"
+    var city: String = ""
+    
+    private var didPerformGeocode = false
+    
+    var locationInfo: [String:AnyObject] = [:]
 
     func applicationDidFinishLaunching() {
         // Perform any final initialization of your application.
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest // GPS
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
+        print("applicationDidFinishLaunching")
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        // if we don't have a valid location, exit
+        guard let location = locations.first , location.horizontalAccuracy >= 0 else { return }
+        
+        // or if we have already searched, return
+        guard !didPerformGeocode else { return }
+        
+        // otherwise, update state variable, stop location services and start geocode
+        didPerformGeocode = true
+        locationManager.stopUpdatingLocation()
+        print("stop updating location")
+        
+        CLGeocoder().reverseGeocodeLocation(location) { placemarks, error in
+            let placemark = placemarks?.first
+            
+            // if there's an error or no placemark, then exit
+            guard error == nil && placemark != nil else {
+                print(error)
+                return
+            }
+            
+            let cityname = (placemark?.locality!)! as String
+            
+            if let country = placemark?.isoCountryCode?.lowercased() {
+                if country == "ru" {
+                    self.countryCode = country
+                } else {
+                    self.countryCode = "en"
+                }
+                print(self.countryCode)
+            }
+            self.longtitude = (placemark?.location?.coordinate.longitude)!
+            self.latitude = (placemark?.location?.coordinate.latitude)!
+            
+            print("got country code and coordinates")
+        }
     }
 
     func applicationDidBecomeActive() {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        print("applicationDidBecomeActive")
     }
 
     func applicationWillResignActive() {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, etc.
+        print("applicationWillResignActive")
     }
 
     func handle(_ backgroundTasks: Set<WKRefreshBackgroundTask>) {
