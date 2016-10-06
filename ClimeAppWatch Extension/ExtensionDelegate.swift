@@ -7,23 +7,18 @@
 //
 
 import WatchKit
+import Foundation
 import CoreLocation
 
 class ExtensionDelegate: NSObject, WKExtensionDelegate, CLLocationManagerDelegate {
     
     let locationManager = CLLocationManager()
     
-    var latitude: Double = 0.0
-    var longtitude: Double = 0.0
-    var countryCode: String = "en"
-    var city: String = ""
-    
     private var didPerformGeocode = false
     
-    var locationInfo: [String:AnyObject] = [:]
-
     func applicationDidFinishLaunching() {
         // Perform any final initialization of your application.
+        
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest // GPS
         locationManager.requestWhenInUseAuthorization()
@@ -52,23 +47,18 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate, CLLocationManagerDelegat
                 return
             }
             
-            let cityname = (placemark?.locality!)! as String
+            city = (placemark?.locality!)! as String
+            long = (placemark?.location?.coordinate.longitude)!
+            lat = (placemark?.location?.coordinate.latitude)!
             
-            if let country = placemark?.isoCountryCode?.lowercased() {
-                if country == "ru" {
-                    self.countryCode = country
-                } else {
-                    self.countryCode = "en"
-                }
-                print(self.countryCode)
-            }
-            self.longtitude = (placemark?.location?.coordinate.longitude)!
-            self.latitude = (placemark?.location?.coordinate.latitude)!
+            print("got coordinates")
             
-            print("got country code and coordinates")
+            let view = WKExtension.shared().rootInterfaceController as! InterfaceController
+            
+            view.retrieveWeatherForecast(lat: long, long: lat)
         }
     }
-
+    
     func applicationDidBecomeActive() {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
         print("applicationDidBecomeActive")

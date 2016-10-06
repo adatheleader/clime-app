@@ -24,8 +24,8 @@
                         </group>
                         <group width="1" alignment="left" verticalAlignment="bottom" id="0T2-bf-8CN">
                             <items>
-                                <label alignment="left" verticalAlignment="center" text="Label" id="NV9-R0-PaS"/>
-                                <label alignment="right" verticalAlignment="center" text="Label" id="2rW-tI-N02"/>
+                                <label alignment="left" verticalAlignment="center" text="---" id="NV9-R0-PaS"/>
+                                <label alignment="right" verticalAlignment="center" text="---" id="2rW-tI-N02"/>
                             </items>
                         </group>
                     </items>

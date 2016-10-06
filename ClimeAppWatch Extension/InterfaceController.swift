@@ -10,6 +10,9 @@ import WatchKit
 import Foundation
 import CoreLocation
 
+public var lat: Double = 0.0
+public var long: Double = 0.0
+public var city: String = ""
 
 class InterfaceController: WKInterfaceController, CLLocationManagerDelegate {
     
@@ -21,42 +24,19 @@ class InterfaceController: WKInterfaceController, CLLocationManagerDelegate {
     @IBOutlet var minMaxTempLabel: WKInterfaceLabel!
     
     private var didPerformGeocode = false
-    let locationManager = CLLocationManager()
-    
-    var lat: Double = 0.0
-    var long: Double = 0.0
-    var countryCode: String = "en"
-    
-    var locationInfo: [String:AnyObject] = [:] {
-        didSet {
-            self.lat = locationInfo["lat"] as! Double
-            self.long = locationInfo["long"] as! Double
-            self.countryCode = locationInfo["countryCode"] as! String
-            
-            let cityname = locationInfo["city"] as! String
-            self.cityNameLabel!.setText("\(cityname)")
-            
-            self.retrieveWeatherForecast(lat: self.lat, long: self.long)
-        }
-    }
-    
+    //let locationManager = CLLocationManager()
     var weeklyWeather: [DailyWeather] = []
 
     override func awake(withContext context: Any?) {
+        print("awake")
         super.awake(withContext: context)
-        
-        // Configure interface objects here.
     }
     
     override func willActivate() {
         // This method is called when watch view controller is about to be visible to user
-        
-        
-        
         print("willActivate")
         super.willActivate()
     }
-    
     
     override func didDeactivate() {
         // This method is called when watch view controller is no longer visible
@@ -66,12 +46,15 @@ class InterfaceController: WKInterfaceController, CLLocationManagerDelegate {
     // MARK: - Weather Fetching
     func retrieveWeatherForecast(lat:Double, long:Double) {
         let forecastService = ForecastService(APIKey: forecastAPIKey)
-        forecastService.getForecast(lat, long: long, APIoptions: "?units=auto&lang=\(self.countryCode)"){
+        forecastService.getForecast(lat, long: long, APIoptions: "?units=auto"){
             (forecast) in
             if let weatherForecast = forecast,
                 let currentWeather = weatherForecast.currentWeather {
                 DispatchQueue.main.async {
                     print("API request init")
+                    
+                    self.cityNameLabel!.setText("\(city)")
+                    
                     if let temperature = currentWeather.temperature {
                         self.currentWeather?.setText("\(temperature)º")
                     }
