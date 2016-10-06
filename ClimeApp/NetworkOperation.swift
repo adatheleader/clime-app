@@ -27,7 +27,7 @@ class NetworkOperation {
         let dataTask = session.dataTask(with: request, completionHandler: {
             (data, response, error) in
             
-            // 1. Check HTTP response for successful GET response
+            // Check HTTP response for successful GET response
             
             if let httpResponse = response as? HTTPURLResponse {
                 

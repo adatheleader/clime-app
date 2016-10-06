@@ -28,6 +28,10 @@ class WeeklyForecastTableViewController: UITableViewController, CLLocationManage
     
     private var didPerformGeocode = false
     
+    let locale = NSLocale.current
+    
+    let supportedLang: [String] = ["ar", "az", "be", "bs", "cs", "de", "el", "en", "es", "fr", "hr", "hu", "id", "it", "is", "kw", "nb", "nl", "pl", "pt", "ru", "sk", "sr", "sv", "tet", "tr", "uk", "x-pig-latin", "zh", "zh-tw"]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Ask for Authorisation from the User.
@@ -66,14 +70,16 @@ class WeeklyForecastTableViewController: UITableViewController, CLLocationManage
             self.updateCityName(placemark: placemark!)
             //self.countryCode = (placemark?.isoCountryCode?.lowercased())!
             
-            if let country = placemark?.isoCountryCode?.lowercased() {
-                if country == "ru" {
-                    self.countryCode = country
+            let lang = self.locale.languageCode
+            print(lang!)
+            for i in self.supportedLang {
+                if lang! == i {
+                    self.countryCode = lang!
                 } else {
                     self.countryCode = "en"
                 }
-                print(self.countryCode)
             }
+            
             self.longtitude = (placemark?.location?.coordinate.longitude)!
             self.latitude = (placemark?.location?.coordinate.latitude)!
             self.retrieveWeatherForecast(lat: self.latitude, long: self.longtitude)
