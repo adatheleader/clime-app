@@ -71,13 +71,13 @@ class WeeklyForecastTableViewController: UITableViewController, CLLocationManage
             //self.countryCode = (placemark?.isoCountryCode?.lowercased())!
             
             let lang = self.locale.languageCode
-            print(lang!)
-            for i in self.supportedLang {
-                if lang! == i {
-                    self.countryCode = lang!
-                } else {
-                    self.countryCode = "en"
-                }
+            
+            if self.supportedLang.contains(lang!) {
+                print("Array contains \(lang!)")
+                self.countryCode = lang!
+            } else {
+                print("Array does not contains \(lang!)")
+                self.countryCode = "en"
             }
             
             self.longtitude = (placemark?.location?.coordinate.longitude)!
