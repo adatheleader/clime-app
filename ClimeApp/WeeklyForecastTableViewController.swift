@@ -8,8 +8,9 @@
 
 import UIKit
 import CoreLocation
+import WatchConnectivity
 
-class WeeklyForecastTableViewController: UITableViewController, CLLocationManagerDelegate {
+class WeeklyForecastTableViewController: UITableViewController, CLLocationManagerDelegate, WCSessionDelegate {
     
     @IBOutlet weak var currentTemperatureLabel: UILabel?
     @IBOutlet weak var currentWeatherIcon: UIImageView?
@@ -17,6 +18,7 @@ class WeeklyForecastTableViewController: UITableViewController, CLLocationManage
     @IBOutlet weak var currentTemperatureRangeLabel: UILabel?
     @IBOutlet weak var currentCityNameLabel: UILabel?
     
+    var session: WCSession?
     
     var weeklyWeather: [DailyWeather] = []
     
@@ -25,6 +27,13 @@ class WeeklyForecastTableViewController: UITableViewController, CLLocationManage
     var latitude: Double = 0.0
     var longtitude: Double = 0.0
     var countryCode: String = "en"
+    
+    
+    var cityName: String = ""
+    var currentTemp: String = ""
+    var currentIcon: UIImage?
+    var currentRain: String = ""
+    var currentRange: String = ""
     
     private var didPerformGeocode = false
     
@@ -42,7 +51,12 @@ class WeeklyForecastTableViewController: UITableViewController, CLLocationManage
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
         configureView()
-        //retrieveWeatherForecast()
+        
+        if WCSession.isSupported() {
+            session = WCSession.default()
+            session?.delegate = self
+            session?.activate()
+        }
         
     }
     
@@ -67,8 +81,8 @@ class WeeklyForecastTableViewController: UITableViewController, CLLocationManage
                 return
             }
             
-            self.updateCityName(placemark: placemark!)
-            //self.countryCode = (placemark?.isoCountryCode?.lowercased())!
+            self.cityName = (placemark?.locality!)! as String
+            self.currentCityNameLabel!.text = self.cityName
             
             let lang = self.locale.languageCode
             
@@ -174,14 +188,17 @@ class WeeklyForecastTableViewController: UITableViewController, CLLocationManage
                     print("API request init")
                     if let temperature = currentWeather.temperature {
                         self.currentTemperatureLabel?.text = "\(temperature)º"
+                        self.currentTemp = "\(temperature)º"
                     }
                     
                     if let precipitation = currentWeather.precipProbabitily {
                         self.currentPrecipitationLabel?.text = "🌧 \(precipitation)%"
+                        self.currentRain = "🌧 \(precipitation)%"
                     }
                     
                     if let icon = currentWeather.icon {
                         self.currentWeatherIcon?.image = icon
+                        self.currentIcon = icon
                     }
                     
                     self.weeklyWeather = weatherForecast.weekly
@@ -189,11 +206,31 @@ class WeeklyForecastTableViewController: UITableViewController, CLLocationManage
                     if let highTemp = self.weeklyWeather.first?.maxTemperature,
                         let lowTemp = self.weeklyWeather.first?.minTemperature {
                         self.currentTemperatureRangeLabel?.text = "↑\(highTemp)º ↓\(lowTemp)º"
+                        self.currentRange = "↑\(highTemp)º ↓\(lowTemp)º"
                     }
                     self.locationManager.stopUpdatingLocation()
                     self.tableView.reloadData()
                 }
             }
         }
+    }
+    
+    @nonobjc func session(session: WCSession, didReceiveMessage message: [String : AnyObject], replyHandler: ([String : AnyObject]) -> Void) {
+        
+        let data : [String: Any] = ["Temp": self.currentTemp, "Pic": self.currentIcon, "Range": self.currentRange, "Rain": self.currentRain, "City": self.cityName]
+        replyHandler(data as [String : AnyObject])
+        
+    }
+    
+    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
+        
+    }
+    
+    func sessionDidBecomeInactive(_ session: WCSession) {
+        
+    }
+    
+    func sessionDidDeactivate(_ session: WCSession) {
+        
     }
 }

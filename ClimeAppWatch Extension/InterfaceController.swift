@@ -8,14 +8,13 @@
 
 import WatchKit
 import Foundation
-import CoreLocation
+import WatchConnectivity
 
-public var lat: Double = 0.0
-public var long: Double = 0.0
-public var city: String = ""
+//public var lat: Double = 0.0
+//public var long: Double = 0.0
+//public var city: String = ""
 
-class InterfaceController: WKInterfaceController, CLLocationManagerDelegate {
-    
+class InterfaceController: WKInterfaceController, WCSessionDelegate {
     
     @IBOutlet var cityNameLabel: WKInterfaceLabel!
     @IBOutlet var weatherImage: WKInterfaceImage!
@@ -26,6 +25,14 @@ class InterfaceController: WKInterfaceController, CLLocationManagerDelegate {
     private var didPerformGeocode = false
     //let locationManager = CLLocationManager()
     var weeklyWeather: [DailyWeather] = []
+    
+    var long: Double = 0.0
+    var lat: Double = 0.0
+    var city: String = ""
+    
+    var session: WCSession?
+    
+    let messageToSend = ["Temp":"0"]
 
     override func awake(withContext context: Any?) {
         print("awake")
@@ -34,6 +41,12 @@ class InterfaceController: WKInterfaceController, CLLocationManagerDelegate {
     
     override func willActivate() {
         // This method is called when watch view controller is about to be visible to user
+        
+        if WCSession.isSupported() {
+            session = WCSession.default()
+            session?.delegate = self
+            session?.activate()
+        }
         print("willActivate")
         super.willActivate()
     }
@@ -43,38 +56,27 @@ class InterfaceController: WKInterfaceController, CLLocationManagerDelegate {
         super.didDeactivate()
     }
     
-    // MARK: - Weather Fetching
-    func retrieveWeatherForecast(lat:Double, long:Double) {
-        let forecastService = ForecastService(APIKey: forecastAPIKey)
-        forecastService.getForecast(lat, long: long, APIoptions: "?units=auto"){
-            (forecast) in
-            if let weatherForecast = forecast,
-                let currentWeather = weatherForecast.currentWeather {
-                DispatchQueue.main.async {
-                    print("API request init")
-                    
-                    self.cityNameLabel!.setText("\(city)")
-                    
-                    if let temperature = currentWeather.temperature {
-                        self.currentWeather?.setText("\(temperature)º")
-                    }
-                    
-                    if let precipitation = currentWeather.precipProbabitily {
-                        self.rainLabel?.setText("🌧 \(precipitation)%")
-                    }
-                    
-                    if let icon = currentWeather.icon {
-                        self.weatherImage?.setImage(icon)
-                    }
-                    
-                    self.weeklyWeather = weatherForecast.weekly
-                    
-                    if let highTemp = self.weeklyWeather.first?.maxTemperature,
-                        let lowTemp = self.weeklyWeather.first?.minTemperature {
-                        self.minMaxTempLabel?.setText("↑\(highTemp)º ↓\(lowTemp)º")
-                    }
-                }
+    @IBAction func refreshWeather() {
+        
+        session?.sendMessage(self.messageToSend, replyHandler: { replyMessage in
+            let temp = replyMessage["Temp"] as? String
+            self.currentWeather?.setText(temp)
+            let pic = replyMessage["Pic"] as? UIImage
+            self.weatherImage?.setImage(pic)
+            let range = replyMessage["Range"] as? String
+            self.minMaxTempLabel?.setText(range)
+            let rain = replyMessage["Rain"] as? String
+            self.rainLabel?.setText(rain)
+            let city = replyMessage["City"] as? String
+            self.cityNameLabel!.setText(city)
             }
-        }
+            , errorHandler: {error in
+                // catch any errors here
+                print(error)
+        })
+    }
+    
+    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
+        
     }
 }

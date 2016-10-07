@@ -7,56 +7,20 @@
 //
 
 import WatchKit
-import Foundation
-import CoreLocation
+import WatchConnectivity
 
-class ExtensionDelegate: NSObject, WKExtensionDelegate, CLLocationManagerDelegate {
+class ExtensionDelegate: NSObject, WKExtensionDelegate, WCSessionDelegate {
     
-    let locationManager = CLLocationManager()
-    
-    private var didPerformGeocode = false
     
     func applicationDidFinishLaunching() {
         // Perform any final initialization of your application.
         
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest // GPS
-        locationManager.requestWhenInUseAuthorization()
-        locationManager.startUpdatingLocation()
-        print("applicationDidFinishLaunching")
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        // if we don't have a valid location, exit
-        guard let location = locations.first , location.horizontalAccuracy >= 0 else { return }
-        
-        // or if we have already searched, return
-        guard !didPerformGeocode else { return }
-        
-        // otherwise, update state variable, stop location services and start geocode
-        didPerformGeocode = true
-        locationManager.stopUpdatingLocation()
-        print("stop updating location")
-        
-        CLGeocoder().reverseGeocodeLocation(location) { placemarks, error in
-            let placemark = placemarks?.first
-            
-            // if there's an error or no placemark, then exit
-            guard error == nil && placemark != nil else {
-                print(error)
-                return
-            }
-            
-            city = (placemark?.locality!)! as String
-            long = (placemark?.location?.coordinate.longitude)!
-            lat = (placemark?.location?.coordinate.latitude)!
-            
-            print("got coordinates")
-            
-            let view = WKExtension.shared().rootInterfaceController as! InterfaceController
-            
-            view.retrieveWeatherForecast(lat: long, long: lat)
+        if WCSession.isSupported() {
+            let session = WCSession.default()
+            session.delegate = self
+            session.activate()
         }
+        print("applicationDidFinishLaunching")
     }
     
     func applicationDidBecomeActive() {
@@ -92,6 +56,10 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate, CLLocationManagerDelegat
                 task.setTaskCompleted()
             }
         }
+    }
+    
+    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
+        
     }
 
 }

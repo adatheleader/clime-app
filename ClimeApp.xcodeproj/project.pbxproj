@@ -26,6 +26,7 @@
 		357F927B1D8AE7FF0033D49C /* ForecastService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357F927A1D8AE7FF0033D49C /* ForecastService.swift */; };
 		357F927D1D8AE8180033D49C /* NetworkOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357F927C1D8AE8170033D49C /* NetworkOperation.swift */; };
 		357F927F1D8AEA370033D49C /* DailyWeatherTabelViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357F927E1D8AEA370033D49C /* DailyWeatherTabelViewCell.swift */; };
+		35B84D011DA7CBDF00141D0B /* WatchConnectivity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35B84D001DA7CBDF00141D0B /* WatchConnectivity.framework */; };
 		35D501131DA26697004EA765 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35D501111DA26697004EA765 /* Interface.storyboard */; };
 		35D501151DA26697004EA765 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 35D501141DA26697004EA765 /* Assets.xcassets */; };
 		35D5011C1DA26698004EA765 /* ClimeAppWatch Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 35D5011B1DA26697004EA765 /* ClimeAppWatch Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -127,6 +128,7 @@
 		357F927A1D8AE7FF0033D49C /* ForecastService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForecastService.swift; sourceTree = "<group>"; };
 		357F927C1D8AE8170033D49C /* NetworkOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkOperation.swift; sourceTree = "<group>"; };
 		357F927E1D8AEA370033D49C /* DailyWeatherTabelViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DailyWeatherTabelViewCell.swift; sourceTree = "<group>"; };
+		35B84D001DA7CBDF00141D0B /* WatchConnectivity.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WatchConnectivity.framework; path = System/Library/Frameworks/WatchConnectivity.framework; sourceTree = SDKROOT; };
 		35D5010F1DA26697004EA765 /* ClimeAppWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ClimeAppWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		35D501121DA26697004EA765 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
 		35D501141DA26697004EA765 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -143,6 +145,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				35B84D011DA7CBDF00141D0B /* WatchConnectivity.framework in Frameworks */,
 				3511CAA21D904520002AD8FA /* CoreLocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -174,6 +177,7 @@
 		3511CAA01D904520002AD8FA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				35B84D001DA7CBDF00141D0B /* WatchConnectivity.framework */,
 				3511CAA11D904520002AD8FA /* CoreLocation.framework */,
 			);
 			name = Frameworks;
@@ -913,6 +917,7 @@
 				35D5012D1DA26698004EA765 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		35D501301DA26698004EA765 /* Build configuration list for PBXNativeTarget "ClimeAppWatch" */ = {
 			isa = XCConfigurationList;
@@ -921,6 +926,7 @@
 				35D5012B1DA26698004EA765 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
