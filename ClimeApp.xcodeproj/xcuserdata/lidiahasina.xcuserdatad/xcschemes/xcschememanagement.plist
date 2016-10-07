@@ -9,9 +9,19 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>ClimeWidget.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>3520D4831DA7DA520022084C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>357F92321D8ADE5D0033D49C</key>
 		<dict>
 			<key>primary</key>

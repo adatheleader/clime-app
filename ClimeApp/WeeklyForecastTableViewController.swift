@@ -39,7 +39,6 @@ class WeeklyForecastTableViewController: UITableViewController, CLLocationManage
         // For use in foreground
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest // GPS
-        locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
         configureView()
         //retrieveWeatherForecast()

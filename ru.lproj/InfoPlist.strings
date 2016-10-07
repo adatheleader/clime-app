@@ -6,3 +6,4 @@
   Copyright © 2016 Lydia Khashina. All rights reserved.
 */
 "NSLocationWhenInUseUsageDescription" = "Приложение использует службу геолокации, чтобы показывать прогноз погоды для места, где вы находитесь";
+"NSLocationAlwaysUsageDescription" = "Приложение использует службу геолокации, чтобы показывать прогноз погоды для места, где вы находитесь в приложении и виджете";

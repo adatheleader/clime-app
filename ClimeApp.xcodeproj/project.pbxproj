@@ -9,6 +9,17 @@
 /* Begin PBXBuildFile section */
 		350A35531D9DA43C00D94826 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 350A35551D9DA43C00D94826 /* InfoPlist.strings */; };
 		3511CAA21D904520002AD8FA /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3511CAA11D904520002AD8FA /* CoreLocation.framework */; };
+		3520D4861DA7DA520022084C /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3520D4851DA7DA520022084C /* NotificationCenter.framework */; };
+		3520D4891DA7DA530022084C /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3520D4881DA7DA530022084C /* TodayViewController.swift */; };
+		3520D48C1DA7DA530022084C /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3520D48A1DA7DA530022084C /* MainInterface.storyboard */; };
+		3520D4901DA7DA530022084C /* ClimeWidget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 3520D4841DA7DA520022084C /* ClimeWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		3520D4951DA7DF700022084C /* APICredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357F926E1D8AE6B80033D49C /* APICredentials.swift */; };
+		3520D4961DA7DF740022084C /* ForecastService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357F927A1D8AE7FF0033D49C /* ForecastService.swift */; };
+		3520D4971DA7DF780022084C /* NetworkOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357F927C1D8AE8170033D49C /* NetworkOperation.swift */; };
+		3520D4981DA7DF7C0022084C /* CurrentWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357F92711D8AE73E0033D49C /* CurrentWeather.swift */; };
+		3520D4991DA7DF7F0022084C /* DailyWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357F92731D8AE76D0033D49C /* DailyWeather.swift */; };
+		3520D49A1DA7DF830022084C /* Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357F92751D8AE78E0033D49C /* Icon.swift */; };
+		3520D49B1DA7DF870022084C /* Forecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357F92771D8AE7B80033D49C /* Forecast.swift */; };
 		357F92371D8ADE5D0033D49C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357F92361D8ADE5D0033D49C /* AppDelegate.swift */; };
 		357F923C1D8ADE5D0033D49C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 357F923A1D8ADE5D0033D49C /* Main.storyboard */; };
 		357F923F1D8ADE5D0033D49C /* ClimeApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 357F923D1D8ADE5D0033D49C /* ClimeApp.xcdatamodeld */; };
@@ -29,6 +40,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		3520D48E1DA7DA530022084C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 357F922B1D8ADE5D0033D49C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3520D4831DA7DA520022084C;
+			remoteInfo = ClimeWidget;
+		};
 		357F924B1D8ADE5D0033D49C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 357F922B1D8ADE5D0033D49C /* Project object */;
@@ -45,12 +63,31 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		3520D4941DA7DA530022084C /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				3520D4901DA7DA530022084C /* ClimeWidget.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		350A354F1D9DA3E200D94826 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
 		350A35501D9DA3E200D94826 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		350A35541D9DA43C00D94826 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		350A35561D9DA43F00D94826 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		3511CAA11D904520002AD8FA /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		3520D4841DA7DA520022084C /* ClimeWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ClimeWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		3520D4851DA7DA520022084C /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		3520D4881DA7DA530022084C /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
+		3520D48B1DA7DA530022084C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		3520D48D1DA7DA530022084C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		357F92331D8ADE5D0033D49C /* ClimeApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ClimeApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		357F92361D8ADE5D0033D49C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		357F923B1D8ADE5D0033D49C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -77,6 +114,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		3520D4811DA7DA520022084C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3520D4861DA7DA520022084C /* NotificationCenter.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		357F92301D8ADE5D0033D49C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -106,8 +151,19 @@
 			isa = PBXGroup;
 			children = (
 				3511CAA11D904520002AD8FA /* CoreLocation.framework */,
+				3520D4851DA7DA520022084C /* NotificationCenter.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3520D4871DA7DA530022084C /* ClimeWidget */ = {
+			isa = PBXGroup;
+			children = (
+				3520D4881DA7DA530022084C /* TodayViewController.swift */,
+				3520D48A1DA7DA530022084C /* MainInterface.storyboard */,
+				3520D48D1DA7DA530022084C /* Info.plist */,
+			);
+			path = ClimeWidget;
 			sourceTree = "<group>";
 		};
 		357F922A1D8ADE5D0033D49C = {
@@ -117,6 +173,7 @@
 				357F92351D8ADE5D0033D49C /* ClimeApp */,
 				357F924D1D8ADE5D0033D49C /* ClimeAppTests */,
 				357F92581D8ADE5D0033D49C /* ClimeAppUITests */,
+				3520D4871DA7DA530022084C /* ClimeWidget */,
 				357F92341D8ADE5D0033D49C /* Products */,
 				3511CAA01D904520002AD8FA /* Frameworks */,
 			);
@@ -128,6 +185,7 @@
 				357F92331D8ADE5D0033D49C /* ClimeApp.app */,
 				357F924A1D8ADE5D0033D49C /* ClimeAppTests.xctest */,
 				357F92551D8ADE5D0033D49C /* ClimeAppUITests.xctest */,
+				3520D4841DA7DA520022084C /* ClimeWidget.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -208,6 +266,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		3520D4831DA7DA520022084C /* ClimeWidget */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3520D4931DA7DA530022084C /* Build configuration list for PBXNativeTarget "ClimeWidget" */;
+			buildPhases = (
+				3520D4801DA7DA520022084C /* Sources */,
+				3520D4811DA7DA520022084C /* Frameworks */,
+				3520D4821DA7DA520022084C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ClimeWidget;
+			productName = ClimeWidget;
+			productReference = 3520D4841DA7DA520022084C /* ClimeWidget.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		357F92321D8ADE5D0033D49C /* ClimeApp */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 357F925E1D8ADE5D0033D49C /* Build configuration list for PBXNativeTarget "ClimeApp" */;
@@ -215,10 +290,12 @@
 				357F922F1D8ADE5D0033D49C /* Sources */,
 				357F92301D8ADE5D0033D49C /* Frameworks */,
 				357F92311D8ADE5D0033D49C /* Resources */,
+				3520D4941DA7DA530022084C /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				3520D48F1DA7DA530022084C /* PBXTargetDependency */,
 			);
 			name = ClimeApp;
 			productName = ClimeApp;
@@ -271,6 +348,11 @@
 				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "Lydia Khashina";
 				TargetAttributes = {
+					3520D4831DA7DA520022084C = {
+						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = H89873LUM4;
+						ProvisioningStyle = Automatic;
+					};
 					357F92321D8ADE5D0033D49C = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = H89873LUM4;
@@ -307,11 +389,20 @@
 				357F92321D8ADE5D0033D49C /* ClimeApp */,
 				357F92491D8ADE5D0033D49C /* ClimeAppTests */,
 				357F92541D8ADE5D0033D49C /* ClimeAppUITests */,
+				3520D4831DA7DA520022084C /* ClimeWidget */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		3520D4821DA7DA520022084C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3520D48C1DA7DA530022084C /* MainInterface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		357F92311D8ADE5D0033D49C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -340,6 +431,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		3520D4801DA7DA520022084C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3520D49B1DA7DF870022084C /* Forecast.swift in Sources */,
+				3520D4971DA7DF780022084C /* NetworkOperation.swift in Sources */,
+				3520D4981DA7DF7C0022084C /* CurrentWeather.swift in Sources */,
+				3520D49A1DA7DF830022084C /* Icon.swift in Sources */,
+				3520D4991DA7DF7F0022084C /* DailyWeather.swift in Sources */,
+				3520D4891DA7DA530022084C /* TodayViewController.swift in Sources */,
+				3520D4961DA7DF740022084C /* ForecastService.swift in Sources */,
+				3520D4951DA7DF700022084C /* APICredentials.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		357F922F1D8ADE5D0033D49C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -378,6 +484,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		3520D48F1DA7DA530022084C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3520D4831DA7DA520022084C /* ClimeWidget */;
+			targetProxy = 3520D48E1DA7DA530022084C /* PBXContainerItemProxy */;
+		};
 		357F924C1D8ADE5D0033D49C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 357F92321D8ADE5D0033D49C /* ClimeApp */;
@@ -398,6 +509,14 @@
 				350A35561D9DA43F00D94826 /* ru */,
 			);
 			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		3520D48A1DA7DA530022084C /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3520D48B1DA7DA530022084C /* Base */,
+			);
+			name = MainInterface.storyboard;
 			sourceTree = "<group>";
 		};
 		357F923A1D8ADE5D0033D49C /* Main.storyboard */ = {
@@ -421,6 +540,32 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		3520D4911DA7DA530022084C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = H89873LUM4;
+				INFOPLIST_FILE = ClimeWidget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.khashin.ClimeApp.ClimeWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		3520D4921DA7DA530022084C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = H89873LUM4;
+				INFOPLIST_FILE = ClimeWidget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.khashin.ClimeApp.ClimeWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
 		357F925C1D8ADE5D0033D49C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -517,6 +662,7 @@
 		357F925F1D8ADE5D0033D49C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = H89873LUM4;
@@ -533,6 +679,7 @@
 		357F92601D8ADE5D0033D49C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = H89873LUM4;
@@ -607,6 +754,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		3520D4931DA7DA530022084C /* Build configuration list for PBXNativeTarget "ClimeWidget" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3520D4911DA7DA530022084C /* Debug */,
+				3520D4921DA7DA530022084C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		357F922E1D8ADE5D0033D49C /* Build configuration list for PBXProject "ClimeApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
