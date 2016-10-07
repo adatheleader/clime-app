@@ -26,6 +26,10 @@ class WeeklyForecastTableViewController: UITableViewController, CLLocationManage
     var longtitude: Double = 0.0
     var countryCode: String = "en"
     
+    let locale = NSLocale.current
+    
+    let supportedLang: [String] = ["ar", "az", "be", "bs", "cs", "de", "el", "en", "es", "fr", "hr", "hu", "id", "it", "is", "kw", "nb", "nl", "pl", "pt", "ru", "sk", "sr", "sv", "tet", "tr", "uk", "x-pig-latin", "zh", "zh-tw"]
+    
     private var didPerformGeocode = false
     
     override func viewDidLoad() {
@@ -66,13 +70,14 @@ class WeeklyForecastTableViewController: UITableViewController, CLLocationManage
             self.updateCityName(placemark: placemark!)
             //self.countryCode = (placemark?.isoCountryCode?.lowercased())!
             
-            if let country = placemark?.isoCountryCode?.lowercased() {
-                if country == "ru" {
-                    self.countryCode = country
-                } else {
-                    self.countryCode = "en"
-                }
-                print(self.countryCode)
+            let lang = self.locale.languageCode
+            
+            if self.supportedLang.contains(lang!) {
+                print("Array contains \(lang!)")
+                self.countryCode = lang!
+            } else {
+                print("Array does not contains \(lang!)")
+                self.countryCode = "en"
             }
             self.longtitude = (placemark?.location?.coordinate.longitude)!
             self.latitude = (placemark?.location?.coordinate.latitude)!
