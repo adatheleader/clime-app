@@ -13,6 +13,8 @@ import CoreLocation
 class TodayViewController: UIViewController, NCWidgetProviding, CLLocationManagerDelegate {
     
     @IBOutlet weak var currentTemp: UILabel!
+    @IBOutlet weak var currentRain: UILabel!
+    @IBOutlet weak var tempIcon: UIImageView!
     
     
     let locationManager = CLLocationManager()
@@ -25,14 +27,17 @@ class TodayViewController: UIViewController, NCWidgetProviding, CLLocationManage
     
     let supportedLang: [String] = ["ar", "az", "be", "bs", "cs", "de", "el", "en", "es", "fr", "hr", "hu", "id", "it", "is", "kw", "nb", "nl", "pl", "pt", "ru", "sk", "sr", "sv", "tet", "tr", "uk", "x-pig-latin", "zh", "zh-tw"]
     
+    
+    var temp: String = "--"
+    var rain: String = "--"
+    var icon: UIImage = #imageLiteral(resourceName: "default")
+    
     private var didPerformGeocode = false
         
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view from its nib.
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest // GPS
-        locationManager.startUpdatingLocation()
+        
     }
     
     
@@ -79,13 +84,15 @@ class TodayViewController: UIViewController, NCWidgetProviding, CLLocationManage
         // Dispose of any resources that can be recreated.
     }
     
-    func widgetPerformUpdate(completionHandler: ((NCUpdateResult) -> Void)) {
+    func widgetPerformUpdate(completionHandler: @escaping (NCUpdateResult) -> Void) {
         // Perform any setup necessary in order to update the view.
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest // GPS
+        locationManager.startUpdatingLocation()
         
-        // If an error is encountered, use NCUpdateResult.Failed
-        // If there's no update required, use NCUpdateResult.NoData
-        // If there's an update, use NCUpdateResult.NewData
-        
+        self.currentTemp?.text = temp
+        self.currentRain?.text = rain
+        self.tempIcon.image = icon
         completionHandler(NCUpdateResult.newData)
     }
     
@@ -99,15 +106,19 @@ class TodayViewController: UIViewController, NCWidgetProviding, CLLocationManage
                 DispatchQueue.main.async {
                     print("API request init")
                     if let temperature = currentWeather.temperature {
+                        self.temp = "\(temperature)º"
+                        //print(self.temp)
                         self.currentTemp?.text = "\(temperature)º"
                     }
                     
                     if let precipitation = currentWeather.precipProbabitily {
-                        //self.currentPrecipitationLabel?.text = "🌧 \(precipitation)%"
+                        self.rain = "\(precipitation)%"
+                        self.currentRain?.text = "\(precipitation)%"
                     }
                     
-                    if let icon = currentWeather.icon {
-                        //self.currentWeatherIcon?.image = icon
+                    if let iconTemp = currentWeather.icon {
+                        self.icon = iconTemp
+                        self.tempIcon?.image = iconTemp
                     }
                     
                     //self.weeklyWeather = weatherForecast.weekly

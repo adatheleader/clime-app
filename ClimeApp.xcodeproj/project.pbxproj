@@ -37,6 +37,7 @@
 		357F927B1D8AE7FF0033D49C /* ForecastService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357F927A1D8AE7FF0033D49C /* ForecastService.swift */; };
 		357F927D1D8AE8180033D49C /* NetworkOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357F927C1D8AE8170033D49C /* NetworkOperation.swift */; };
 		357F927F1D8AEA370033D49C /* DailyWeatherTabelViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357F927E1D8AEA370033D49C /* DailyWeatherTabelViewCell.swift */; };
+		35B6D82D1DAFD2B40079418E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 357F92401D8ADE5D0033D49C /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -399,6 +400,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				35B6D82D1DAFD2B40079418E /* Assets.xcassets in Resources */,
 				3520D48C1DA7DA530022084C /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -761,6 +763,7 @@
 				3520D4921DA7DA530022084C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		357F922E1D8ADE5D0033D49C /* Build configuration list for PBXProject "ClimeApp" */ = {
 			isa = XCConfigurationList;
