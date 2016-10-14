@@ -18,26 +18,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="37"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="99º" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="GcN-lo-r42">
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="99º" lineBreakMode="tailTruncation" numberOfLines="0" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="GcN-lo-r42">
+                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default" translatesAutoresizingMaskIntoConstraints="NO" id="LGU-aj-nqU"/>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1%" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="LMO-8R-Tcx">
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
+                        <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="LGU-aj-nqU" firstAttribute="centerY" secondItem="S3S-Oj-5AN" secondAttribute="centerY" id="FoY-SI-wP4"/>
-                            <constraint firstItem="LMO-8R-Tcx" firstAttribute="leading" secondItem="LGU-aj-nqU" secondAttribute="trailing" constant="8" id="Lzo-hd-vae"/>
-                            <constraint firstItem="LGU-aj-nqU" firstAttribute="centerX" secondItem="S3S-Oj-5AN" secondAttribute="centerX" id="Pos-TT-6ZX"/>
-                            <constraint firstItem="LGU-aj-nqU" firstAttribute="centerY" secondItem="GcN-lo-r42" secondAttribute="centerY" id="k5q-hr-uPP"/>
-                            <constraint firstItem="LMO-8R-Tcx" firstAttribute="centerY" secondItem="LGU-aj-nqU" secondAttribute="centerY" id="n2g-64-4sq"/>
-                            <constraint firstItem="LGU-aj-nqU" firstAttribute="leading" secondItem="GcN-lo-r42" secondAttribute="trailing" constant="8" id="w5V-om-t94"/>
+                            <constraint firstItem="LGU-aj-nqU" firstAttribute="leading" secondItem="S3S-Oj-5AN" secondAttribute="leading" constant="123" id="CEm-y7-AOM"/>
+                            <constraint firstItem="GcN-lo-r42" firstAttribute="centerY" secondItem="LGU-aj-nqU" secondAttribute="centerY" id="EC8-Hl-S5F"/>
+                            <constraint firstItem="GcN-lo-r42" firstAttribute="leading" secondItem="LGU-aj-nqU" secondAttribute="trailing" constant="8" symbolic="YES" id="hgd-F8-7SM"/>
+                            <constraint firstItem="LGU-aj-nqU" firstAttribute="centerY" secondItem="S3S-Oj-5AN" secondAttribute="centerY" id="nSo-Ac-nZr"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="Phv-fK-QSv" appends="YES" id="0HT-KY-F0T"/>
+                        </connections>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <nil key="simulatedStatusBarMetrics"/>
@@ -46,12 +43,16 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="37"/>
                     <connections>
-                        <outlet property="currentRain" destination="LMO-8R-Tcx" id="LUG-Pf-LtA"/>
                         <outlet property="currentTemp" destination="GcN-lo-r42" id="Qkh-yJ-IUQ"/>
                         <outlet property="tempIcon" destination="LGU-aj-nqU" id="s2F-cW-TOz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vXp-U4-Rya" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="Phv-fK-QSv">
+                    <connections>
+                        <action selector="openApp:" destination="M4Y-Lb-cyx" id="OKr-aF-Z3E"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-126.40000000000001" y="135.38230884557723"/>
         </scene>
