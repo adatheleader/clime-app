@@ -21,6 +21,9 @@ class TodayViewController: UIViewController, NCWidgetProviding, CLLocationManage
     let supportedLang: [String] = ["ar", "az", "be", "bs", "cs", "de", "el", "en", "es", "fr", "hr", "hu", "id", "it", "is", "kw", "nb", "nl", "pl", "pt", "ru", "sk", "sr", "sv", "tet", "tr", "uk", "x-pig-latin", "zh", "zh-tw"]
     var currentLocation: CLLocation?
     private var didPerformGeocode = false
+    
+    
+    let defaults = UserDefaults.standard
         
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,8 +32,18 @@ class TodayViewController: UIViewController, NCWidgetProviding, CLLocationManage
         locationManager.desiredAccuracy = kCLLocationAccuracyBest // GPS
         locationManager.startUpdatingLocation()
         print("viewDidLoad")
-        self.currentTemp?.textColor = UIColor.clear
-        self.currentSummary?.textColor = UIColor.clear
+        
+        if let temp = self.defaults.integer(forKey: "currentTemp") as Int? {
+            self.currentTemp.text = "\(temp)º"
+        }
+        
+        if let myEncodedImageData = self.defaults.object(forKey: "currentIcon") as! Data? {
+            let icon = UIImage(data: myEncodedImageData)
+            self.tempIcon.image = icon
+        }
+        
+        //self.currentTemp?.textColor = UIColor.clear
+        //self.currentSummary?.textColor = UIColor.clear
     }
     
     
@@ -91,7 +104,8 @@ class TodayViewController: UIViewController, NCWidgetProviding, CLLocationManage
                     DispatchQueue.main.async {
                         print("API request init")
                         if let temperature = currentWeather.temperature {
-                            self.currentTemp?.textColor = UIColor.darkText
+                            //self.currentTemp?.textColor = UIColor.darkText
+                            self.defaults.set(temperature, forKey: "currentTemp")
                             self.currentTemp?.text = "\(temperature)º"
                         }
                         
@@ -101,6 +115,10 @@ class TodayViewController: UIViewController, NCWidgetProviding, CLLocationManage
                         }*/
                         
                         if let iconTemp = currentWeather.icon {
+                            let imageData = UIImagePNGRepresentation(iconTemp)
+                            //let myEncodedImageData = NSKeyedArchiver.archivedData(withRootObject: imageData)
+                            self.defaults.set(imageData, forKey: "currentIcon")
+                            
                             self.tempIcon?.image = iconTemp
                         }
                     }

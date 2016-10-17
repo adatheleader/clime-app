@@ -23,14 +23,19 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default" translatesAutoresizingMaskIntoConstraints="NO" id="LGU-aj-nqU"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default" translatesAutoresizingMaskIntoConstraints="NO" id="LGU-aj-nqU">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="1dP-Di-k5v"/>
+                                    <constraint firstAttribute="height" constant="40" id="6vw-dC-Utu"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="LGU-aj-nqU" firstAttribute="leading" secondItem="S3S-Oj-5AN" secondAttribute="leading" constant="123" id="CEm-y7-AOM"/>
-                            <constraint firstItem="GcN-lo-r42" firstAttribute="centerY" secondItem="LGU-aj-nqU" secondAttribute="centerY" id="EC8-Hl-S5F"/>
-                            <constraint firstItem="GcN-lo-r42" firstAttribute="leading" secondItem="LGU-aj-nqU" secondAttribute="trailing" constant="8" symbolic="YES" id="hgd-F8-7SM"/>
-                            <constraint firstItem="LGU-aj-nqU" firstAttribute="centerY" secondItem="S3S-Oj-5AN" secondAttribute="centerY" id="nSo-Ac-nZr"/>
+                            <constraint firstItem="LGU-aj-nqU" firstAttribute="centerX" secondItem="S3S-Oj-5AN" secondAttribute="centerX" constant="-23" id="M42-MC-Aag"/>
+                            <constraint firstItem="LGU-aj-nqU" firstAttribute="centerY" secondItem="S3S-Oj-5AN" secondAttribute="centerY" id="Vr9-2h-SvG"/>
+                            <constraint firstItem="GcN-lo-r42" firstAttribute="centerY" secondItem="S3S-Oj-5AN" secondAttribute="centerY" id="ing-wy-4i8"/>
+                            <constraint firstItem="GcN-lo-r42" firstAttribute="centerX" secondItem="S3S-Oj-5AN" secondAttribute="centerX" constant="24" id="jFI-mc-sNZ"/>
                         </constraints>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="Phv-fK-QSv" appends="YES" id="0HT-KY-F0T"/>
