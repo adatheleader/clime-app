@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0800"
+   LastUpgradeVersion = "0810"
    wasCreatedForAppExtension = "YES"
    version = "2.0">
    <BuildAction
@@ -67,16 +67,26 @@
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES"
       launchAutomaticallySubstyle = "2">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <RemoteRunnable
+         runnableDebuggingMode = "2"
+         BundleIdentifier = "com.apple.springboard">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "357F92321D8ADE5D0033D49C"
-            BuildableName = "ClimeApp.app"
-            BlueprintName = "ClimeApp"
+            BlueprintIdentifier = "3520D4831DA7DA520022084C"
+            BuildableName = "ClimeWidget.appex"
+            BlueprintName = "ClimeWidget"
             ReferencedContainer = "container:ClimeApp.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </RemoteRunnable>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "3520D4831DA7DA520022084C"
+            BuildableName = "ClimeWidget.appex"
+            BlueprintName = "ClimeWidget"
+            ReferencedContainer = "container:ClimeApp.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
