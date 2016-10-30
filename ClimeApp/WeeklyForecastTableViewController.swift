@@ -62,7 +62,7 @@ class WeeklyForecastTableViewController: UITableViewController, CLLocationManage
             
             // if there's an error or no placemark, then exit
             guard error == nil && placemark != nil else {
-                print(error)
+                ///print(error)
                 return
             }
             
